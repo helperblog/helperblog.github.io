@@ -2,56 +2,24 @@
 layout: default
 ---
 
-<div class="home-container">
-  <header class="page-header">
-    <h1>{{ page.title | default: site.title }}</h1>
-    {% if site.description %}
-      <p class="tagline">{{ site.description }}</p>
-    {% endif %}
-  </header>
+<div class="home">
+  <h1 class="page-heading">{{ page.title | default: site.title }}</h1>
 
-  <main class="post-list">
-    <h2>Latest Posts</h2>
-    <ul>
+  {% if site.posts.size > 0 %}
+    <ul class="post-list">
       {% for post in site.posts %}
         <li>
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
-          {% if post.description %}
-            <p>{{ post.description }}</p>
+          <span class="post-meta">{{ post.date | date: "%B %d, %Y" }}</span>
+          <h2>
+            <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h2>
+          {% if post.excerpt %}
+            <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
           {% endif %}
         </li>
       {% endfor %}
     </ul>
-  </main>
+  {% else %}
+    <p>No posts found.</p>
+  {% endif %}
 </div>
-
-<style>
-  .home-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  .page-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .tagline {
-    font-size: 1.1rem;
-    color: #666;
-  }
-  .post-list ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  .post-list li {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 1rem;
-  }
-  .post-date {
-    font-size: 0.9rem;
-    color: #999;
-  }
-</style>
-
