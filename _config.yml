@@ -1,3 +1,4 @@
+
 title: HelperBlog
 email: your_email@example.com # अपनी ईमेल से बदलें
 description: A blog dedicated to providing helpful guides and tutorials.
@@ -13,6 +14,4 @@ plugins:
   - jekyll-sitemap
 
 env: production
-
-# Theme (यदि आप एक थीम का उपयोग कर रहे थे, तो आप इसे यहाँ निर्दिष्ट करेंगे)
-# theme: minima
+theme: minima
