@@ -1,0 +1,29 @@
+---
+layout: blog
+---
+
+<article class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <p class="post-meta">
+    Date: {{ page.date | date: "%B %d, %Y" }}
+    {% if page.author %} • Author: {{ page.author }} {% endif %}
+  </p>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <div class="comments">
+    <h2>Comments</h2>
+    <p>Comment feature will be available soon!</p>
+  </div>
+
+  <div class="recent-posts">
+    <h2>Recent Posts</h2>
+    <ul>
+      {% for post in site.posts limit:5 reversed %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</article>
