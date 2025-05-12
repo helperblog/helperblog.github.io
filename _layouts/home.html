@@ -2,43 +2,30 @@
 layout: default
 ---
 
-<div class="home-container" style="max-width: 750px; margin: 2rem auto; padding: 1rem;">
+<div class="container">
+  <h1>Welcome to HelperBlog</h1>
+  <p>Your source for practical Jekyll, GitHub Pages, and SEO tips.</p>
 
-  <header class="site-header" style="text-align: center; margin-bottom: 2rem;">
-    <h1 style="font-size: 2rem; font-weight: 600;">{{ site.title }}</h1>
-    <p style="font-size: 1rem; color: #555;">{{ site.description }}</p>
-  </header>
+  <h2>Latest Posts</h2>
+  {% if site.posts.size > 0 %}
+    {% for post in paginator.posts %}
+      <div class="post-preview">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No posts found.</p>
+  {% endif %}
 
-  <section class="post-list">
-    {% if paginator.posts %}
-      {% for post in paginator.posts %}
-        <article class="post-preview" style="border-bottom: 1px solid #ddd; padding: 1rem 0;">
-          <h2 style="margin: 0 0 0.5rem 0;">
-            <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #2c3e50;">
-              {{ post.title }}
-            </a>
-          </h2>
-          <p style="margin: 0.2rem 0; color: #666; font-size: 0.9rem;">
-            {{ post.date | date: "%B %d, %Y" }}
-          </p>
-          <p style="margin-top: 0.5rem; font-size: 1rem; color: #333;">
-            {{ post.excerpt | strip_html | truncate: 150 }}
-          </p>
-        </article>
-      {% endfor %}
-
-      <nav class="pagination" style="margin-top: 2rem; text-align: center;">
-        {% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path | relative_url }}" style="margin-right: 1rem;">&larr; Newer</a>
-        {% endif %}
-        {% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path | relative_url }}">Older &rarr;</a>
-        {% endif %}
-      </nav>
-    {% else %}
-      <p>No posts found.</p>
+  <!-- Pagination -->
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">« Prev</a>
     {% endif %}
-  </section>
-
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">Next »</a>
+    {% endif %}
+  </div>
 </div>
 
