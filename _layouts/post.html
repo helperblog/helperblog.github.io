@@ -1,29 +1,129 @@
----
-layout: blog
----
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-IN' }}" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  {% include head.html %}
+  
+  <!-- Enhanced Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "{{ page.schema_type | default: 'BlogPosting' }}",
+    "headline": "{{ page.title | escape }}",
+    "description": "{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ page.author | default: site.author.name }}",
+      "url": "{{ '/about' | absolute_url }}",
+      "sameAs": [
+        "https://github.com/{{ site.author.github }}",
+        "https://twitter.com/{{ site.author.twitter }}"
+      ]
+    },
+    "datePublished": "{{ page.date | date: '%Y-%m-%dT%H:%M:%S%:z' }}",
+    "dateModified": "{{ page.last_modified_at | date: '%Y-%m-%dT%H:%M:%S%:z' | default: page.date | date: '%Y-%m-%dT%H:%M:%S%:z' }}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ site.organization.name }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.organization.logo | absolute_url }}",
+        "width": "600",
+        "height": "60"
+      }
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ page.image | default: site.organization.logo | absolute_url }}",
+      "width": "1200",
+      "height": "630"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ page.url | absolute_url }}"
+    },
+    "interactionStatistic": {
+      "@type": "InteractionCounter",
+      "interactionType": "https://schema.org/CommentAction",
+      "userInteractionCount": "{{ page.comments_count | default: 0 }}"
+    }
+  }
+  </script>
+</head>
 
-<article class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <p class="post-meta">
-    Date: {{ page.date | date: "%B %d, %Y" }}
-    {% if page.author %} • Author: {{ page.author }} {% endif %}
-  </p>
+<body class="post-template">
+  {% include header.html %}
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+  <main id="content" class="container" role="main" itemprop="mainContentOfPage">
+    <article class="post-full" itemscope itemtype="https://schema.org/BlogPosting">
+      
+      <header class="post-header">
+        <h1 class="post-title" itemprop="headline">{{ page.title | escape }}</h1>
+        
+        <div class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+            {{ page.date | date: "%b %-d, %Y" }}
+          </time>
+          
+          {% if page.author %}
+          • <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+              <span itemprop="name">{{ page.author }}</span>
+            </span>
+          {% endif %}
+          
+          {% if page.last_modified_at %}
+          • <span>Updated: 
+              <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">
+                {{ page.last_modified_at | date: "%b %-d, %Y" }}
+              </time>
+            </span>
+          {% endif %}
+          
+          <meta itemprop="wordCount" content="{{ content | number_of_words }}">
+          <meta itemprop="keywords" content="{{ page.tags | join: ',' }}">
+        </div>
+        
+        {% if page.image %}
+        <figure class="post-image" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+          <img src="{{ page.image | absolute_url }}" alt="{{ page.title | escape }}" itemprop="url">
+          <meta itemprop="width" content="1200">
+          <meta itemprop="height" content="630">
+        </figure>
+        {% endif %}
+      </header>
 
-  <div class="comments">
-    <h2>Comments</h2>
-    <p>Comment feature will be available soon!</p>
-  </div>
+      <div class="post-content" itemprop="articleBody">
+        {{ content }}
+        
+        {% if page.toc %}
+        <div class="toc-wrapper">
+          <h2>Table of Contents</h2>
+          {% include toc.html html=content %}
+        </div>
+        {% endif %}
+      </div>
 
-  <div class="recent-posts">
-    <h2>Recent Posts</h2>
-    <ul>
-      {% for post in site.posts limit:5 reversed %}
-        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
-</article>
+      <footer class="post-footer">
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <a href="/tags/#{{ tag | slugify }}">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+        
+        {% if page.share %}
+        <div class="social-share">
+          <span>Share:</span>
+          <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ page.url | absolute_url | uri_escape }}" target="_blank">Twitter</a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url | uri_escape }}&title={{ page.title | uri_escape }}" target="_blank">LinkedIn</a>
+        </div>
+        {% endif %}
+      </footer>
+    </article>
+
+    {% if page.comments %}
+      {% include comments.html %}
+    {% endif %}
+  </main>
+
+  {% include footer.html %}
+</body>
+</html>
