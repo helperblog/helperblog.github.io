@@ -48,17 +48,17 @@ kramdown:
 sass:
   style: compressed
 
-# Minimal SEO social sharing (image will not load on page, just in metadata)
+# Optional SEO image (won't display, just metadata)
 seo:
   default_image: "https://via.placeholder.com/1200x630?text=HelperBlog"
 
-# Analytics & Comments (Optional)
+# Analytics & Comments (optional)
 google_analytics: ""
 disqus_shortname: ""
 
-# Security headers (reference only, GitHub Pages does not allow setting headers directly)
+# GitHub Pages doesn't allow these headers directly, this is reference only
 security_headers:
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
+  X-Frame-Options: "DENY"
+  X-Content-Type-Options: "nosniff"
   X-XSS-Protection: "1; mode=block"
 
