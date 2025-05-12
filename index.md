@@ -1,16 +1,13 @@
 ---
 layout: home
-title: "Home"
-description: "Get practical tech guides, Jekyll tips, and GitHub Pages tutorials"
 ---
 
-## Welcome to HelperBlog
+## Latest Posts
 
-**HelperBlog** is your go-to place for:
-
-- Practical tutorials on **Jekyll**
-- Tips for using **GitHub Pages**
-- SEO-friendly **website development**
-- Clean and responsive blog layouts
-
-Start exploring our latest posts below!
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
