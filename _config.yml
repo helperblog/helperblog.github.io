@@ -1,17 +1,68 @@
+# _config.yml (Fully Optimized)
+title: "HelperBlog | Tech Tips & Tutorials"
+description: "Practical guides on Jekyll, GitHub Pages, and web development with SEO optimization"
+url: "https://helperblog.github.io"
+baseurl: "" # For project pages, use '/repository-name'
 
-title: HelperBlog
-email: your_email@example.com # अपनी ईमेल से बदलें
-description: A blog dedicated to providing helpful guides and tutorials.
-baseurl: ""
-url: "https://helperblog.github.io" # आपकी GitHub Pages URL
-twitter_username: your_twitter # वैकल्पिक
-github_username: your_github # वैकल्पिक
+# Internationalization
+lang: "en-IN"
+timezone: "Asia/Kolkata"
 
+# Build settings
+markdown: kramdown
+highlighter: rouge
 permalink: /:title/
+paginate: 5
+paginate_path: "/page:num/"
 
+# Plugins (GitHub Pages supported)
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-avatar
+  - jekyll-mentions
 
-env: production
-theme: minima
+# Author and Org Schema
+author:
+  name: "Mushaahid Raza"
+  email: "your@email.com"
+  twitter: "@yourhandle"
+  github: "helperblog"
+  image: "/assets/author.jpg"
+
+organization:
+  name: "HelperBlog"
+  url: "https://helperblog.github.io"
+  logo: "/assets/logo.png"
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      author: "Mushaahid Raza"
+      image: "/assets/default-social.jpg"
+      share: true
+      schema_type: "BlogPosting"
+      toc: true
+
+# Performance
+kramdown:
+  toc_levels: 1..3
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+
+sass:
+  style: compressed
+
+# Security headers (will be added via GitHub Pages)
+security_headers:
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: "1; mode=block"
+# Custom variables
+google_analytics: "UA-XXXXX-Y"
+disqus_shortname: "yourdisqusid"
