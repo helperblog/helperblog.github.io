@@ -1,7 +1,7 @@
 title: "HelperBlog | Tech Tips & Tutorials"
 description: "Practical guides on Jekyll, GitHub Pages, and web development with SEO optimization"
 url: "https://helperblog.github.io"
-baseurl: "" # For project pages, use '/repository-name'
+baseurl: ""
 
 lang: "en-IN"
 timezone: "Asia/Kolkata"
@@ -12,27 +12,22 @@ permalink: /:title/
 paginate: 5
 paginate_path: "/page:num/"
 
-theme: minima
-
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-avatar
   - jekyll-mentions
-  - jekyll-paginate
 
 author:
   name: "Mushaahid Raza"
   email: "your@email.com"
   twitter: "@yourhandle"
   github: "helperblog"
-  image: "/assets/author.jpg"
 
 organization:
   name: "HelperBlog"
   url: "https://helperblog.github.io"
-  logo: "/assets/logo.png"
 
 defaults:
   - scope:
@@ -42,7 +37,6 @@ defaults:
       layout: "post"
       comments: true
       author: "Mushaahid Raza"
-      image: "/assets/default-social.jpg"
       share: true
       schema_type: "BlogPosting"
       toc: true
@@ -54,5 +48,17 @@ kramdown:
 sass:
   style: compressed
 
-google_analytics: "UA-XXXXX-Y"
-disqus_shortname: "yourdisqusid"
+# Minimal SEO social sharing (image will not load on page, just in metadata)
+seo:
+  default_image: "https://via.placeholder.com/1200x630?text=HelperBlog"
+
+# Analytics & Comments (Optional)
+google_analytics: ""
+disqus_shortname: ""
+
+# Security headers (reference only, GitHub Pages does not allow setting headers directly)
+security_headers:
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: "1; mode=block"
+
