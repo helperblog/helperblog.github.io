@@ -1,0 +1,16 @@
+title: HelperBlog
+email: your_email@example.com # अपनी ईमेल से बदलें
+description: A blog dedicated to providing helpful guides and tutorials.
+baseurl: ""
+url: "https://helperblog.github.io" # आपकी GitHub Pages URL
+twitter_username: your_twitter # वैकल्पिक
+github_username: your_github # वैकल्पिक
+
+permalink: /:title/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Theme (यदि आप एक थीम का उपयोग कर रहे थे, तो आप इसे यहाँ निर्दिष्ट करेंगे)
+# theme: minima
