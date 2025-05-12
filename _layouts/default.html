@@ -3,36 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | escape }} | {{ site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
-  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
-  {%- seo -%}
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines }}">
+
+  {% seo %}
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+      background-color: #fff;
+      color: #222;
+    }
+
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav {
+      margin: 1rem 0;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      font-weight: 500;
+    }
+
+    main {
+      padding: 1rem;
+    }
+
+    footer {
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #ddd;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title"><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
-      <p class="site-tagline">{{ site.description }}</p>
-    </div>
+
+  <header>
+    <h1 style="margin: 0; font-size: 1.5rem;">{{ site.title }}</h1>
+    <p style="margin: 0.2rem 0;">{{ site.description }}</p>
+
+    <nav>
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      <a href="{{ '/contact/' | relative_url }}">Contact</a>
+      <a href="{{ '/categories/' | relative_url }}">Categories</a>
+    </nav>
   </header>
 
-  <nav class="site-nav">
-    <div class="container">
-      <a href="{{ "/" | relative_url }}">Home</a>
-      <a href="{{ "/about/" | relative_url }}">About</a>
-      <a href="{{ "/contact/" | relative_url }}">Contact</a>
-    </div>
-  </nav>
-
-  <main class="site-content container">
+  <main>
     {{ content }}
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. Built with Jekyll & GitHub Pages.</p>
-    </div>
+  <footer>
+    <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
 
