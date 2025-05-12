@@ -1,0 +1,146 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.site-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header styles */
+header.bg-black {
+  background-color: #000;
+  padding: 1em 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 a {
+  text-decoration: none;
+}
+
+header nav a {
+  margin-left: 1em;
+  text-decoration: none;
+}
+
+/* Main body styles */
+.bg-white {
+  background-color: #fff;
+  flex-grow: 1;
+}
+
+.text-black {
+  color: #000;
+}
+
+.page-content {
+  padding: 2em 0;
+}
+
+/* Footer styles */
+footer.bg-black {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 1em 0;
+}
+
+/* Homepage post list */
+.post-list-home {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list-home li {
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #eee;
+}
+
+.post-list-home li:last-child {
+  border-bottom: none;
+}
+
+.post-list-home li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Post page styles */
+.post-title {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.post-meta {
+  color: #777;
+  font-size: 0.9em;
+  margin-bottom: 1em;
+}
+
+.post-content {
+  margin-top: 2em;
+  line-height: 1.8;
+}
+
+/* Recent posts section */
+.recent-posts {
+  margin-top: 3em;
+  padding-top: 1em;
+  border-top: 1px solid #eee;
+}
+
+.recent-posts h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.recent-posts ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recent-posts ul li {
+  margin-bottom: 0.5em;
+}
+
+.recent-posts ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header nav {
+    margin-top: 1em;
+  }
+
+  header nav a {
+    margin: 0 0.5em;
+  }
+    }
