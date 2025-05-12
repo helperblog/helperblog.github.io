@@ -2,64 +2,36 @@
 layout: default
 ---
 
-<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
-  <header class="post-header">
-    <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
-    <p class="post-meta">
-      Published on 
-      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %d, %Y" }}</time>
-      <meta itemprop="dateModified" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}">
-      <meta itemprop="author" content="{{ site.author.name }}">
-      <meta itemprop="publisher" content="{{ site.organization.name }}">
-      <meta itemprop="mainEntityOfPage" content="{{ page.url | absolute_url }}">
+<article class="post" style="max-width: 750px; margin: 2rem auto; padding: 1rem; line-height: 1.7; font-size: 1rem; color: #333;">
+
+  <header style="margin-bottom: 2rem;">
+    <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">{{ page.title }}</h1>
+    <p style="color: #666; font-size: 0.9rem;">
+      {{ page.date | date: "%B %d, %Y" }}{% if page.author %} &middot; By {{ page.author }}{% endif %}
     </p>
   </header>
 
-  {% if page.categories %}
-    <p class="post-categories">
-      Categories:
-      {% for cat in page.categories %}
-        <a href="{{ '/categories/#' | append: cat | relative_url }}">{{ cat }}</a>{% unless forloop.last %}, {% endunless %}
-      {% endfor %}
-    </p>
-  {% endif %}
-
-  {% if page.tags %}
-    <p class="post-tags">
-      Tags:
-      {% for tag in page.tags %}
-        <a href="{{ '/tags/#' | append: tag | relative_url }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-      {% endfor %}
-    </p>
-  {% endif %}
-
   {% if page.toc %}
-    <nav class="post-toc">
-      <h2>Table of Contents</h2>
+    <nav class="toc" style="background: #f9f9f9; border: 1px solid #ddd; padding: 1rem; margin-bottom: 2rem;">
+      <strong>Table of Contents</strong>
       {{ content | toc_only }}
     </nav>
   {% endif %}
 
-  <div class="post-content" itemprop="articleBody">
+  <div class="post-content">
     {{ content }}
   </div>
 
-  <footer class="post-footer">
-    <hr>
-    <div id="disqus_thread"></div>
-    <script>
-    var disqus_config = function () {
-      this.page.url = "{{ page.url | absolute_url }}";
-      this.page.identifier = "{{ page.url }}";
-    };
-    (function() {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://{{ site.disqus_shortname }}.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-    </script>
-    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  <footer style="margin-top: 3rem; font-size: 0.9rem; color: #888;">
+    <p><strong>Tags:</strong> 
+      {% for tag in page.tags %}
+        <span style="margin-right: 0.5rem;">{{ tag }}</span>
+      {% endfor %}
+    </p>
+    <p>
+      <a href="{{ '/' | relative_url }}">← Back to Home</a>
+    </p>
   </footer>
+
 </article>
 
