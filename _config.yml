@@ -12,5 +12,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+env: production
+
 # Theme (यदि आप एक थीम का उपयोग कर रहे थे, तो आप इसे यहाँ निर्दिष्ट करेंगे)
 # theme: minima
