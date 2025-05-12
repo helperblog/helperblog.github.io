@@ -2,36 +2,12 @@
 layout: default
 ---
 
-<article class="post" style="max-width: 750px; margin: 2rem auto; padding: 1rem; line-height: 1.7; font-size: 1rem; color: #333;">
+<article class="post-content">
+  <h1>{{ page.title }}</h1>
+  <p class="meta">Published on {{ page.date | date: "%B %d, %Y" }}</p>
 
-  <header style="margin-bottom: 2rem;">
-    <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">{{ page.title }}</h1>
-    <p style="color: #666; font-size: 0.9rem;">
-      {{ page.date | date: "%B %d, %Y" }}{% if page.author %} &middot; By {{ page.author }}{% endif %}
-    </p>
-  </header>
-
-  {% if page.toc %}
-    <nav class="toc" style="background: #f9f9f9; border: 1px solid #ddd; padding: 1rem; margin-bottom: 2rem;">
-      <strong>Table of Contents</strong>
-      {{ content | toc_only }}
-    </nav>
-  {% endif %}
-
-  <div class="post-content">
+  <div class="post-body">
     {{ content }}
   </div>
-
-  <footer style="margin-top: 3rem; font-size: 0.9rem; color: #888;">
-    <p><strong>Tags:</strong> 
-      {% for tag in page.tags %}
-        <span style="margin-right: 0.5rem;">{{ tag }}</span>
-      {% endfor %}
-    </p>
-    <p>
-      <a href="{{ '/' | relative_url }}">← Back to Home</a>
-    </p>
-  </footer>
-
 </article>
 
