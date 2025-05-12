@@ -6,56 +6,80 @@
 }
 
 body {
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  background: #fff;
-  color: #222;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 16px;
   line-height: 1.7;
-  padding: 1rem;
-  text-align: center;
+  color: #222;
+  background: #fff;
+  padding: 0;
 }
 
 /* Container */
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   padding: 1rem;
 }
 
-/* Header */
+/* Header with Left Title + Right Menu */
 header {
-  padding: 1rem 0;
-  border-bottom: 1px solid #eee;
-}
-
-header h1 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Menu (Cloud Style) */
-.nav {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+  background: #f9f9f9;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+}
+
+header .site-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Drop-down Menu */
+.nav {
+  position: relative;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav li {
+  position: relative;
 }
 
 .nav a {
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
-  background: #f0f0f0;
-  color: #444;
   text-decoration: none;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  transition: all 0.3s;
+  color: #444;
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  transition: 0.3s;
 }
 
 .nav a:hover {
-  background: #ddd;
-  color: #000;
+  background: #eee;
+}
+
+/* Responsive Drop-down Style */
+.nav ul ul {
+  display: none;
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  flex-direction: column;
+  background: #fff;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.nav li:hover > ul {
+  display: flex;
 }
 
 /* Post List */
@@ -67,16 +91,11 @@ header h1 {
 }
 
 .post-card {
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
   background: #fafafa;
-  transition: background 0.3s;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
   text-align: left;
-}
-
-.post-card:hover {
-  background: #f4f4f4;
 }
 
 .post-card h2 {
@@ -85,58 +104,69 @@ header h1 {
 }
 
 .post-card p {
-  color: #555;
   font-size: 1rem;
+  color: #555;
 }
 
-/* Single Post Page */
+/* Post Page */
 .post-content {
-  text-align: left;
+  padding: 2rem 1rem;
 }
 
 .post-content h1 {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.7rem;
+  margin-bottom: 1.2rem;
 }
 
 .meta {
+  text-align: center;
   font-size: 0.9rem;
   color: #999;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .post-body {
-  color: #333;
+  text-align: justify;
   font-size: 1.05rem;
+  color: #333;
+  padding: 0 1rem;
 }
 
 /* Footer */
 footer {
+  text-align: center;
   margin-top: 3rem;
+  padding: 1rem;
   border-top: 1px solid #eee;
-  padding: 1rem 0;
-  font-size: 0.9rem;
   color: #888;
+  font-size: 0.9rem;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  body {
-    font-size: 15px;
-    padding: 0.5rem;
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
   }
 
-  .post-card {
-    padding: 0.8rem;
+  .nav ul {
+    flex-direction: column;
   }
 
-  .nav {
-    gap: 0.3rem;
+  .nav ul ul {
+    position: static;
+    border: none;
+    padding: 0;
   }
 
-  .nav a {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.85rem;
+  .post-content {
+    padding: 1rem 0.5rem;
+  }
+
+  .post-body {
+    padding: 0;
   }
 }
 
