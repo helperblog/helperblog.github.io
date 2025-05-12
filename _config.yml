@@ -1,29 +1,27 @@
-# _config.yml (Fully Optimized)
 title: "HelperBlog | Tech Tips & Tutorials"
 description: "Practical guides on Jekyll, GitHub Pages, and web development with SEO optimization"
 url: "https://helperblog.github.io"
 baseurl: "" # For project pages, use '/repository-name'
 
-# Internationalization
 lang: "en-IN"
 timezone: "Asia/Kolkata"
 
-# Build settings
 markdown: kramdown
 highlighter: rouge
 permalink: /:title/
 paginate: 5
 paginate_path: "/page:num/"
 
-# Plugins (GitHub Pages supported)
+theme: minima
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-avatar
   - jekyll-mentions
+  - jekyll-paginate
 
-# Author and Org Schema
 author:
   name: "Mushaahid Raza"
   email: "your@email.com"
@@ -36,7 +34,6 @@ organization:
   url: "https://helperblog.github.io"
   logo: "/assets/logo.png"
 
-# Defaults
 defaults:
   - scope:
       path: ""
@@ -50,7 +47,6 @@ defaults:
       schema_type: "BlogPosting"
       toc: true
 
-# Performance
 kramdown:
   toc_levels: 1..3
   smart_quotes: lsquo,rsquo,ldquo,rdquo
@@ -58,11 +54,6 @@ kramdown:
 sass:
   style: compressed
 
-# Security headers (will be added via GitHub Pages)
-security_headers:
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  X-XSS-Protection: "1; mode=block"
-# Custom variables
 google_analytics: "UA-XXXXX-Y"
 disqus_shortname: "yourdisqusid"
+
